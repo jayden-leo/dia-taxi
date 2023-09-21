@@ -3,11 +3,13 @@ package com.jayden.apipassenger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class ApiPassenger {
+@EnableFeignClients
+public class ApiPassengerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ApiPassenger.class);
+        SpringApplication.run(ApiPassengerApplication.class);
     }
 }
