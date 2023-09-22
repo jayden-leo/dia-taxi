@@ -1,10 +1,12 @@
 package com.jayden.apipassenger.service;
 
 import com.jayden.apipassenger.remote.ServiceVerificationCodeClient;
+import com.jayen.internelcommon.constant.CommonStatusEnum;
 import com.jayen.internelcommon.dto.ResponseResult;
 import com.jayen.internelcommon.response.NumberCodeResponse;
 import com.jayen.internelcommon.response.TokenResponse;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -33,7 +35,7 @@ public class VerificationCodeService {
         int numberCode = numberCodeResponse.getData().getNumberCode();
 
         // 存入redis
-        String key = verificationCodePrefix + passengerPhone;
+        String key = generatorKeyByPhone(passengerPhone);
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
 
         // 通过短信服务商，将对应的验证码发送到手机上。阿里短信服务、腾讯短信同、华信、容联。
@@ -48,9 +50,18 @@ public class VerificationCodeService {
      */
     public ResponseResult checkCode(String passengerPhone, String verificationCode) {
         // 根据手机号，取redis读取验证码
-        System.out.println("根据手机号，取redis读取验证码");
+        // 生成key
+        String key = generatorKeyByPhone(passengerPhone);
+        // 根据key获取value
+        String codeRedis = stringRedisTemplate.opsForValue().get(key);
+        System.out.println("redis中的value："+codeRedis);
         // 校验验证码
-        System.out.println("校验验证码");
+        if (StringUtils.isBlank(codeRedis)){
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode()).setMessage(CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
+        if (!verificationCode.trim().equals(codeRedis)){
+            return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode()).setMessage(CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
+        }
         // 判断原来是否由用户，并进行对应的处理
         System.out.println("判断原来是否由用户");
         // 颁发令牌
@@ -60,5 +71,14 @@ public class VerificationCodeService {
         TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken("token");
         return ResponseResult.success(tokenResponse);
+    }
+
+    /**
+     * 根据手机号生成key
+     * @param passengerPhone
+     * @return
+     */
+    private String generatorKeyByPhone(String passengerPhone){
+        return verificationCodePrefix+passengerPhone;
     }
 }

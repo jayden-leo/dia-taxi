@@ -6,6 +6,7 @@
     <modules>
         <module>api-passenger</module>
         <module>internel-common</module>
+        <module>service-passenger-user</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>

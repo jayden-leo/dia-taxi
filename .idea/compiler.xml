@@ -10,6 +10,7 @@
         <module name="api-passenger" />
         <module name="service-verificationcode" />
         <module name="internel-common" />
+        <module name="service-passenger-user" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="api-passenger" options="-parameters" />
       <module name="internel-common" options="-parameters" />
+      <module name="service-passenger-user" options="-parameters" />
       <module name="service-verificationcode" options="-parameters" />
     </option>
   </component>
