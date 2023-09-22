@@ -1,4 +1,4 @@
-package com.jayden.apipassenger.request;
+package com.jayen.internelcommon.request;
 
 import lombok.Data;
 
