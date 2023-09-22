@@ -12,12 +12,9 @@ public class NumberCodeController {
 
     @GetMapping("/numberCode/{size}")
     public ResponseResult numberCode(@PathVariable("size") int size) {
-        System.out.println("size: " + size);
         // 生成验证码
         double random = (Math.random() * 9 + 1) * Math.pow(10, size - 1);
         int numberCode = (int) random;
-        System.out.println("service-verificationcode : "+numberCode);
-
         NumberCodeResponse response = new NumberCodeResponse();
         response.setNumberCode(numberCode);
         return ResponseResult.success(response);

@@ -12,7 +12,15 @@ public class ResponseResult<T> {
     private T data;
 
     /**
-     * 成功响应的方法
+     * 成功响应的方法 无返回数据
+     * @return
+     */
+    public static ResponseResult success(){
+        return new ResponseResult().setCode(CommonStatusEnum.SUCCESS.getCode()).setMessage(CommonStatusEnum.SUCCESS.getValue());
+    }
+
+    /**
+     * 成功响应的方法 有返回数据
      * @param data
      * @param <T>
      * @return
