@@ -22,7 +22,7 @@ public class UserService {
         HashMap<String, Object> map = new HashMap<>();
         map.put("passenger_phone", passengerPhone);
         List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
-        // 判断用户信息是否存在
+        // 判断用户信息是否存在,如果不存在，插入用户信息
         if (passengerUsers.size()==0){
             PassengerUser passengerUser = new PassengerUser();
             passengerUser.setPassengerName("张三");
@@ -35,8 +35,6 @@ public class UserService {
 
             passengerUserMapper.insert(passengerUser);
         }
-
-        //如果不沉溺在，插入用户信息
 
         return ResponseResult.success();
     }

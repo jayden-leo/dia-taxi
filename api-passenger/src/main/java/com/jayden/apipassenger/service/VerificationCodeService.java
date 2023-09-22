@@ -1,8 +1,10 @@
 package com.jayden.apipassenger.service;
 
+import com.jayden.apipassenger.remote.ServicePassengerUserClient;
 import com.jayden.apipassenger.remote.ServiceVerificationCodeClient;
 import com.jayen.internelcommon.constant.CommonStatusEnum;
 import com.jayen.internelcommon.dto.ResponseResult;
+import com.jayen.internelcommon.request.VerificationCodeDTO;
 import com.jayen.internelcommon.response.NumberCodeResponse;
 import com.jayen.internelcommon.response.TokenResponse;
 import net.sf.json.JSONObject;
@@ -23,6 +25,9 @@ public class VerificationCodeService {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private ServicePassengerUserClient servicePassengerUserClient;
 
     /**
      * 生成验证码
@@ -63,7 +68,11 @@ public class VerificationCodeService {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode()).setMessage(CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
         // 判断原来是否由用户，并进行对应的处理
-        System.out.println("判断原来是否由用户");
+        VerificationCodeDTO verificationCodeDTO = new VerificationCodeDTO();
+        verificationCodeDTO.setPassengerPhone(passengerPhone);
+        verificationCodeDTO.setVerificationCode(verificationCode);
+        servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
+
         // 颁发令牌
         System.out.println("颁发令牌");
 
