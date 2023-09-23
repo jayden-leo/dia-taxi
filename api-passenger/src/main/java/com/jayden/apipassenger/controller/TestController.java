@@ -25,7 +25,8 @@ public class TestController {
      * 没有token也能正常返回
      * @return
      */
+    @GetMapping("/noauthTest")
     public ResponseResult noauthTest(){
-        return ResponseResult.success("soauthTest");
+        return ResponseResult.success("no authTest");
     }
 }
