@@ -9,7 +9,7 @@ import com.jayen.internelcommon.request.VerificationCodeDTO;
 import com.jayen.internelcommon.response.NumberCodeResponse;
 import com.jayen.internelcommon.response.TokenResponse;
 import com.jayen.internelcommon.util.JWTUtils;
-import net.sf.json.JSONObject;
+import com.jayen.internelcommon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -22,12 +22,6 @@ public class VerificationCodeService {
 
     @Autowired
     private ServiceVerificationCodeClient serviceVerificationCodeClient;
-
-    // 乘客验证码的前缀
-    private String verificationCodePrefix = "passenger-verification-code-";
-
-    // token 存储的前缀
-    private String tokenPrefix = "token-";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -47,7 +41,7 @@ public class VerificationCodeService {
         int numberCode = numberCodeResponse.getData().getNumberCode();
 
         // 存入redis
-        String key = generatorKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
         stringRedisTemplate.opsForValue().set(key, numberCode + "", 2, TimeUnit.MINUTES);
 
         // 通过短信服务商，将对应的验证码发送到手机上。阿里短信服务、腾讯短信同、华信、容联。
@@ -64,7 +58,7 @@ public class VerificationCodeService {
     public ResponseResult checkCode(String passengerPhone, String verificationCode) {
         // 根据手机号，取redis读取验证码
         // 生成key
-        String key = generatorKeyByPhone(passengerPhone);
+        String key = RedisPrefixUtils.generatorKeyByPhone(passengerPhone);
         // 根据key获取value
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
         System.out.println("redis中的value：" + codeRedis);
@@ -83,7 +77,7 @@ public class VerificationCodeService {
 
         // 颁发令牌
         String token = JWTUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
-        String tokenKey = generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
+        String tokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
         stringRedisTemplate.opsForValue().set(tokenKey,token,30,TimeUnit.DAYS);
         // 相应
         TokenResponse tokenResponse = new TokenResponse();
@@ -91,17 +85,5 @@ public class VerificationCodeService {
         return ResponseResult.success(tokenResponse);
     }
 
-    /**
-     * 根据手机号生成key
-     *
-     * @param passengerPhone
-     * @return
-     */
-    private String generatorKeyByPhone(String passengerPhone) {
-        return verificationCodePrefix + passengerPhone;
-    }
 
-    private String generatorTokenKey(String phone, String identity) {
-        return tokenPrefix + phone + "-" + identity;
-    }
 }
