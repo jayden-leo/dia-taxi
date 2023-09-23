@@ -1,5 +1,6 @@
 package com.jayden.apipassenger.controller;
 
+import com.jayen.internelcommon.dto.ResponseResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,4 +12,20 @@ public class TestController {
         return "test api-passenger";
     }
 
+    /**
+     * 需要有token
+     * @return
+     */
+    @GetMapping("/authTest")
+    public ResponseResult authTest(){
+        return ResponseResult.success("auth test");
+    }
+
+    /**
+     * 没有token也能正常返回
+     * @return
+     */
+    public ResponseResult noauthTest(){
+        return ResponseResult.success("soauthTest");
+    }
 }
