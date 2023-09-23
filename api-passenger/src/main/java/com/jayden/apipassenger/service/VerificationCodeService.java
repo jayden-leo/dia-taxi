@@ -3,10 +3,12 @@ package com.jayden.apipassenger.service;
 import com.jayden.apipassenger.remote.ServicePassengerUserClient;
 import com.jayden.apipassenger.remote.ServiceVerificationCodeClient;
 import com.jayen.internelcommon.constant.CommonStatusEnum;
+import com.jayen.internelcommon.constant.IdentityConstant;
 import com.jayen.internelcommon.dto.ResponseResult;
 import com.jayen.internelcommon.request.VerificationCodeDTO;
 import com.jayen.internelcommon.response.NumberCodeResponse;
 import com.jayen.internelcommon.response.TokenResponse;
+import com.jayen.internelcommon.util.JWTUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,11 +76,10 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        System.out.println("颁发令牌");
-
-        // 响应
         TokenResponse tokenResponse = new TokenResponse();
+        String token = JWTUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
         tokenResponse.setToken("token");
+
         return ResponseResult.success(tokenResponse);
     }
 
