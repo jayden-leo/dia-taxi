@@ -23,7 +23,11 @@ public class VerificationCodeService {
     @Autowired
     private ServiceVerificationCodeClient serviceVerificationCodeClient;
 
+    // 乘客验证码的前缀
     private String verificationCodePrefix = "passenger-verification-code-";
+
+    // token 存储的前缀
+    private String tokenPrefix = "token-";
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -33,6 +37,7 @@ public class VerificationCodeService {
 
     /**
      * 生成验证码
+     *
      * @param passengerPhone
      * @return
      */
@@ -51,6 +56,7 @@ public class VerificationCodeService {
 
     /**
      * 校验验证码
+     *
      * @param passengerPhone
      * @param verificationCode
      * @return
@@ -61,12 +67,12 @@ public class VerificationCodeService {
         String key = generatorKeyByPhone(passengerPhone);
         // 根据key获取value
         String codeRedis = stringRedisTemplate.opsForValue().get(key);
-        System.out.println("redis中的value："+codeRedis);
+        System.out.println("redis中的value：" + codeRedis);
         // 校验验证码
-        if (StringUtils.isBlank(codeRedis)){
+        if (StringUtils.isBlank(codeRedis)) {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode()).setMessage(CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
-        if (!verificationCode.trim().equals(codeRedis)){
+        if (!verificationCode.trim().equals(codeRedis)) {
             return ResponseResult.fail(CommonStatusEnum.VERIFICATION_CODE_ERROR.getCode()).setMessage(CommonStatusEnum.VERIFICATION_CODE_ERROR.getValue());
         }
         // 判断原来是否由用户，并进行对应的处理
@@ -76,19 +82,26 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        TokenResponse tokenResponse = new TokenResponse();
         String token = JWTUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
+        String tokenKey = generatorTokenKey(passengerPhone,IdentityConstant.PASSENGER_IDENTITY);
+        stringRedisTemplate.opsForValue().set(tokenKey,token,30,TimeUnit.DAYS);
+        // 相应
+        TokenResponse tokenResponse = new TokenResponse();
         tokenResponse.setToken(token);
-
         return ResponseResult.success(tokenResponse);
     }
 
     /**
      * 根据手机号生成key
+     *
      * @param passengerPhone
      * @return
      */
-    private String generatorKeyByPhone(String passengerPhone){
-        return verificationCodePrefix+passengerPhone;
+    private String generatorKeyByPhone(String passengerPhone) {
+        return verificationCodePrefix + passengerPhone;
+    }
+
+    private String generatorTokenKey(String phone, String identity) {
+        return tokenPrefix + phone + "-" + identity;
     }
 }
