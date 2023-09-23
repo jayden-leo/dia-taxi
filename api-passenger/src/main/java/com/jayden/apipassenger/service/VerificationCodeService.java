@@ -78,7 +78,7 @@ public class VerificationCodeService {
         // 颁发令牌
         TokenResponse tokenResponse = new TokenResponse();
         String token = JWTUtils.generatorToken(passengerPhone, IdentityConstant.PASSENGER_IDENTITY);
-        tokenResponse.setToken("token");
+        tokenResponse.setToken(token);
 
         return ResponseResult.success(tokenResponse);
     }
