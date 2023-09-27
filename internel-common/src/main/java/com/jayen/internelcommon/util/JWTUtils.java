@@ -26,16 +26,16 @@ public class JWTUtils {
 
     private static final String JWT_TOKEN_TYPE = "token_type";
 
+    private static final String JWT_TOKEN_TIME = "tokenTime";
+
     // 生成token
     public static String generatorToken(String passengerPhone, String identity, String tokenType) {
         Map<String, String> map = new HashMap<>();
         map.put(JWT_KEY_PHONE, passengerPhone);
         map.put(JWT_KEY_IDENTITY, identity);
         map.put(JWT_TOKEN_TYPE, tokenType);
-        // token 一天后过期
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 1);
-        Date date = calendar.getTime();
+        // 每次生成的token不一样
+        map.put(JWT_TOKEN_TIME, Calendar.getInstance().getTime().toString());
 
         JWTCreator.Builder builder = JWT.create();
         // 整合map
