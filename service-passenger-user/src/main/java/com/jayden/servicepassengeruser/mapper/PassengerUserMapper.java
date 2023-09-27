@@ -1,6 +1,7 @@
 package com.jayden.servicepassengeruser.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jayen.internelcommon.dto.PassengerUser;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -1,6 +1,8 @@
 package com.jayden.servicepassengeruser.service;
 
 import com.jayden.servicepassengeruser.mapper.PassengerUserMapper;
+import com.jayen.internelcommon.constant.CommonStatusEnum;
+import com.jayen.internelcommon.dto.PassengerUser;
 import com.jayen.internelcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,18 @@ public class UserService {
         }
 
         return ResponseResult.success();
+    }
+
+    public ResponseResult getUserByPhone(String passengerPhone) {
+        // 根据手机号查询用户信息
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("passenger_phone", passengerPhone);
+        List<PassengerUser> passengerUsers = passengerUserMapper.selectByMap(map);
+        if (passengerUsers.size()==0){
+            return ResponseResult.fail(CommonStatusEnum.USER_NOT_EXISTS.getCode(),CommonStatusEnum.USER_NOT_EXISTS.getValue());
+        }else{
+            PassengerUser passengerUser = passengerUsers.get(0);
+            return ResponseResult.success(passengerUser);
+        }
     }
 }
