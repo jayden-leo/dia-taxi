@@ -1,6 +1,5 @@
 package com.jayden.servicepassengeruser.service;
 
-import com.jayden.servicepassengeruser.dto.PassengerUser;
 import com.jayden.servicepassengeruser.mapper.PassengerUserMapper;
 import com.jayen.internelcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
