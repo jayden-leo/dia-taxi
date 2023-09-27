@@ -1,6 +1,6 @@
 package com.jayen.internelcommon.constant;
 
-public class IdentityConstant {
+public class IdentityConstants {
     // 乘客身份
     public static final String PASSENGER_IDENTITY = "1";
 
