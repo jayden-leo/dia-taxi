@@ -1,11 +1,9 @@
 package com.jayden.apipassenger.service;
 
 
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.request.ForecastPriceDTO;
-import com.jayen.internelcommon.response.ForecastPriceResponse;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.request.ForecastPriceDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service

@@ -1,7 +1,7 @@
 package com.jayden.apipassenger.controller;
 
 import com.jayden.apipassenger.service.UserService;
-import com.jayen.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

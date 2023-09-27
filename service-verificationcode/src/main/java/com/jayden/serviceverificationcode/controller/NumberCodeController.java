@@ -1,7 +1,7 @@
 package com.jayden.serviceverificationcode.controller;
 
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.response.NumberCodeResponse;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.response.NumberCodeResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

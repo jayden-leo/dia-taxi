@@ -1,8 +1,8 @@
 package com.jayden.apipassenger.controller;
 
 import com.jayden.apipassenger.service.TokenService;
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.response.TokenResponse;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.response.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

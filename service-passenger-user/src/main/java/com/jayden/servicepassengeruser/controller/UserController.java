@@ -2,8 +2,8 @@ package com.jayden.servicepassengeruser.controller;
 
 
 import com.jayden.servicepassengeruser.service.UserService;
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.request.VerificationCodeDTO;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.request.VerificationCodeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

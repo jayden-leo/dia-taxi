@@ -1,18 +1,14 @@
 package com.jayden.apipassenger.interceptor;
 
 
-import com.auth0.jwt.exceptions.AlgorithmMismatchException;
-import com.auth0.jwt.exceptions.SignatureVerificationException;
-import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.jayen.internelcommon.constant.TokenConstants;
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.dto.TokenResult;
-import com.jayen.internelcommon.util.JWTUtils;
-import com.jayen.internelcommon.util.RedisPrefixUtils;
+import com.jayden.internelcommon.constant.TokenConstants;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.dto.TokenResult;
+import com.jayden.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.util.RedisPrefixUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 

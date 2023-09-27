@@ -1,12 +1,12 @@
 package com.jayden.apipassenger.service;
 
-import com.jayen.internelcommon.constant.CommonStatusEnum;
-import com.jayen.internelcommon.constant.TokenConstants;
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.dto.TokenResult;
-import com.jayen.internelcommon.response.TokenResponse;
-import com.jayen.internelcommon.util.JWTUtils;
-import com.jayen.internelcommon.util.RedisPrefixUtils;
+import com.jayden.internelcommon.constant.CommonStatusEnum;
+import com.jayden.internelcommon.constant.TokenConstants;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.dto.TokenResult;
+import com.jayden.internelcommon.response.TokenResponse;
+import com.jayden.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;

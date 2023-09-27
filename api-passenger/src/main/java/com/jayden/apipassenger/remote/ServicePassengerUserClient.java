@@ -1,7 +1,7 @@
 package com.jayden.apipassenger.remote;
 
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.request.VerificationCodeDTO;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.request.VerificationCodeDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

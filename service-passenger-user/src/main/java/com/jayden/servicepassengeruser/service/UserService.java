@@ -1,9 +1,9 @@
 package com.jayden.servicepassengeruser.service;
 
 import com.jayden.servicepassengeruser.mapper.PassengerUserMapper;
-import com.jayen.internelcommon.constant.CommonStatusEnum;
-import com.jayen.internelcommon.dto.PassengerUser;
-import com.jayen.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.constant.CommonStatusEnum;
+import com.jayden.internelcommon.dto.PassengerUser;
+import com.jayden.internelcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

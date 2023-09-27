@@ -1,11 +1,10 @@
 package com.jayden.apipassenger.service;
 
 import com.jayden.apipassenger.remote.ServicePassengerUserClient;
-import com.jayen.internelcommon.dto.PassengerUser;
-import com.jayen.internelcommon.dto.ResponseResult;
-import com.jayen.internelcommon.dto.TokenResult;
-import com.jayen.internelcommon.request.VerificationCodeDTO;
-import com.jayen.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.dto.PassengerUser;
+import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.dto.TokenResult;
+import com.jayden.internelcommon.util.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
