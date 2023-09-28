@@ -7,7 +7,6 @@ import com.jayden.internelcommon.response.DirectionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Response;
 
 @Service
 public class DirectionService {
@@ -24,11 +23,9 @@ public class DirectionService {
      * @return
      */
     public ResponseResult driving(String depLongitude, String depLatitude, String destLongitude, String destLatitude){
-        System.out.println("调用第三方地图接口");
         // 调用第三方地图接口
-//        DirectionResponse direction = mapDirectionClient.direction(depLongitude, depLatitude, destLongitude, destLatitude);
+        DirectionResponse direction = mapDirectionClient.direction(depLongitude, depLatitude, destLongitude, destLatitude);
 
-//        return ResponseResult.success(direction);
-        return ResponseResult.success();
+        return ResponseResult.success(direction);
     }
 }

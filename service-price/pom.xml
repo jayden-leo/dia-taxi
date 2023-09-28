@@ -60,8 +60,5 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.28</version>
         </dependency>
-
-
     </dependencies>
-
 </project>

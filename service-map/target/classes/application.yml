@@ -18,6 +18,6 @@ spring:
 
 # 自定义的 key：value
 amap:
-  key: 8d30fb1481b310324acccc7fd36bf5c1
+  key: bf2ef2cbc72f3d0c3194b1b62eb314ad
   #服务id，服务名称：测试2
   sid: 809558
