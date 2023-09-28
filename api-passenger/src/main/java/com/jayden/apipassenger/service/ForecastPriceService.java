@@ -1,17 +1,20 @@
 package com.jayden.apipassenger.service;
 
 
+import com.jayden.apipassenger.remote.ServicePriceClient;
 import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.request.ForecastPriceDTO;
+import com.jayden.internelcommon.response.ForecastPriceResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
 public class ForecastPriceService {
 
-//    @Autowired
-//    ServicePriceClient servicePriceClient;
+    @Autowired
+    ServicePriceClient servicePriceClient;
 
     /**
      * 根据 出发地和目的地经纬度 计算预估价格
@@ -37,9 +40,7 @@ public class ForecastPriceService {
         forecastPriceDTO.setDestLatitude(destLatitude);
         forecastPriceDTO.setCityCode(cityCode);
         forecastPriceDTO.setVehicleType(vehicleType);
-//        ResponseResult<ForecastPriceResponse> forecast = servicePriceClient.forecast(forecastPriceDTO);
-
-        return ResponseResult.success();
-//        return ResponseResult.success(forecast.getData());
+        ResponseResult<ForecastPriceResponse> forecast = servicePriceClient.forecast(forecastPriceDTO);
+        return ResponseResult.success(forecast.getData());
     }
 }
