@@ -10,6 +10,7 @@
         <module>service-price</module>
         <module>service-map</module>
         <module>service-dirver-user</module>
+        <module>api-boss</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
