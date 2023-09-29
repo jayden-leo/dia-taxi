@@ -26,17 +26,17 @@ public class DriverUserController {
         return driverUserService.addDriverUser(driverUser);
     }
 
-//    /**
-//     * 修改司机
-//     * @param driverUser
-//     * @return
-//     */
-//    @PutMapping("/driver-user")
-//    public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
-//        return driverUserService.updateDriverUser(driverUser);
-//    }
-//
-//
+    /**
+     * 修改司机
+     * @param driverUser
+     * @return
+     */
+    @PutMapping("/driver-user")
+    public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser){
+        return driverUserService.updateDriverUser(driverUser);
+    }
+
+
 //    @Autowired
 //    CarService carService;
 //
