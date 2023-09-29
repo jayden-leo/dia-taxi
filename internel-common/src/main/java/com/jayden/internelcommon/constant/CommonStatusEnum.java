@@ -31,8 +31,6 @@ public enum CommonStatusEnum {
 
     PRICE_RULE_CHANGED(1303,"计价规则有变化"),
 
-
-
     /**
      * 地图信息：1400-1499
      */
@@ -43,7 +41,7 @@ public enum CommonStatusEnum {
      */
     DRIVER_CAR_BIND_NOT_EXISTS(1500,"司机和车辆绑定关系不存在"),
 
-    DRIVER_NOT_EXITST(1501,"司机不存在"),
+    DRIVER_NOT_EXISTS(1501,"司机不存在"),
 
     DRIVER_CAR_BIND_EXISTS(1502,"司机和车辆绑定关系已存在，请勿重复绑定"),
 
@@ -60,20 +58,17 @@ public enum CommonStatusEnum {
      */
     ORDER_GOING_ON(1600,"有正在进行的订单"),
 
-    /**
-     * 下单异常
-     */
     DEVICE_IS_BLACK(1601,"该设备超过下单次数"),
 
     CITY_SERVICE_NOT_SERVICE(1602,"当前城市不提供叫车服务"),
 
     ORDER_CANCEL_ERROR(1603, "订单取消失败"),
 
-
     /**
      * 成功
      */
     SUCCESS(1,"success"),
+
     /**
      * 失败
      */

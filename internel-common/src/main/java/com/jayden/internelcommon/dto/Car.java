@@ -6,14 +6,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author 晁鹏飞
- * @since 2022-07-28
- */
 @Data
 public class Car implements Serializable {
 

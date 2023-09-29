@@ -4,14 +4,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author cpf
- * @since 2022-10-11
- */
 @Data
 public class PriceRule implements Serializable {
 

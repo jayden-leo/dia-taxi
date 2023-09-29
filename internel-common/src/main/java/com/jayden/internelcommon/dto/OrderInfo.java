@@ -5,14 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author cpf
- * @since 2022-10-10
- */
+
 @Data
 public class OrderInfo implements Serializable {
 
