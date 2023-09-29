@@ -9,6 +9,7 @@
         <module>service-passenger-user</module>
         <module>service-price</module>
         <module>service-map</module>
+        <module>service-dirver-user</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>

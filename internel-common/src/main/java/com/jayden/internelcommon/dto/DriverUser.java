@@ -8,8 +8,6 @@ import java.time.LocalDateTime;
 
 @Data
 public class DriverUser {
-
-
     private Long id;
     private String address;
     private String driverName;
