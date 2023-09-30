@@ -1,7 +1,9 @@
 package com.jayden.apiboss.controller;
 
 
+import com.jayden.apiboss.service.CarService;
 import com.jayden.apiboss.service.DriverUserService;
+import com.jayden.internelcommon.dto.Car;
 import com.jayden.internelcommon.dto.DriverUser;
 import com.jayden.internelcommon.dto.ResponseResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,11 +39,11 @@ public class DriverUserController {
     }
 
 
-//    @Autowired
-//    CarService carService;
-//
-//    @PostMapping("/car")
-//    public ResponseResult car(@RequestBody Car car){
-//        return carService.addCar(car);
-//    }
+    @Autowired
+    CarService carService;
+
+    @PostMapping("/cars")
+    public ResponseResult car(@RequestBody Car car){
+        return carService.addCar(car);
+    }
 }

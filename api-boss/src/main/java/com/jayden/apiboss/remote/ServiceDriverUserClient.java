@@ -18,7 +18,7 @@ public interface ServiceDriverUserClient {
     @RequestMapping(method = RequestMethod.PUT, value = "/users")
     public ResponseResult updateDriverUser(@RequestBody DriverUser driverUser);
 
-    @RequestMapping(method = RequestMethod.POST, value = "/car")
+    @RequestMapping(method = RequestMethod.POST, value = "/cars")
     public ResponseResult addCar(@RequestBody Car car);
 
     @RequestMapping(method = RequestMethod.POST,value = "/driver-car-binding-relationship/bind")
