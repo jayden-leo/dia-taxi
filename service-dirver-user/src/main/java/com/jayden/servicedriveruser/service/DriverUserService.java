@@ -1,11 +1,13 @@
 package com.jayden.servicedriveruser.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.jayden.internelcommon.constant.CommonStatusEnum;
 import com.jayden.internelcommon.constant.DriverCarConstants;
-import com.jayden.internelcommon.dto.DriverUser;
-import com.jayden.internelcommon.dto.DriverUserWorkStatus;
-import com.jayden.internelcommon.dto.ResponseResult;
+import com.jayden.internelcommon.dto.*;
+import com.jayden.servicedriveruser.mapper.CarMapper;
+import com.jayden.servicedriveruser.mapper.DriverCarBindingRelationshipMapper;
 import com.jayden.servicedriveruser.mapper.DriverUserMapper;
+import com.jayden.servicedriveruser.mapper.DriverUserWorkStatusMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +22,11 @@ public class DriverUserService {
     @Autowired
     private DriverUserMapper driverUserMapper;
 
-//    @Autowired
-//    private DriverUserWorkStatusMapper driverUserWorkStatusMapper;
-//
-//    @Autowired
-//    private CarMapper carMapper;
+    @Autowired
+    private DriverUserWorkStatusMapper driverUserWorkStatusMapper;
+
+    @Autowired
+    private CarMapper carMapper;
 
     public ResponseResult testGetDriverUser(){
 
@@ -41,12 +43,12 @@ public class DriverUserService {
 
         driverUserMapper.insert(driverUser);
         // 初始化 司机工作状态表
-//        DriverUserWorkStatus driverUserWorkStatus = new DriverUserWorkStatus();
-//        driverUserWorkStatus.setDriverId(driverUser.getId());
-//        driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_STOP);
-//        driverUserWorkStatus.setGmtModified(now);
-//        driverUserWorkStatus.setGmtCreate(now);
-//        driverUserWorkStatusMapper.insert(driverUserWorkStatus);
+        DriverUserWorkStatus driverUserWorkStatus = new DriverUserWorkStatus();
+        driverUserWorkStatus.setDriverId(driverUser.getId());
+        driverUserWorkStatus.setWorkStatus(DriverCarConstants.DRIVER_WORK_STATUS_STOP);
+        driverUserWorkStatus.setGmtModified(now);
+        driverUserWorkStatus.setGmtCreate(now);
+        driverUserWorkStatusMapper.insert(driverUserWorkStatus);
 
 
         return ResponseResult.success("");
@@ -60,18 +62,18 @@ public class DriverUserService {
     }
 
 
-//    public ResponseResult<DriverUser> getDriverUserByPhone(String driverPhone){
-//        Map<String,Object> map = new HashMap<>();
-//        map.put("driver_phone", driverPhone);
-//        map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
-//        List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
-//        if (driverUsers.isEmpty()){
-//            return ResponseResult.fail(CommonStatusEnum.DRIVER_NOT_EXITST.getCode(),CommonStatusEnum.DRIVER_NOT_EXITST.getValue());
-//        }
-//        DriverUser driverUser = driverUsers.get(0);
-//        return ResponseResult.success(driverUser);
-//    }
-//
+    public ResponseResult<DriverUser> getDriverUserByPhone(String driverPhone){
+        Map<String,Object> map = new HashMap<>();
+        map.put("driver_phone", driverPhone);
+        map.put("state", DriverCarConstants.DRIVER_STATE_VALID);
+        List<DriverUser> driverUsers = driverUserMapper.selectByMap(map);
+        if (driverUsers.isEmpty()){
+            return ResponseResult.fail(CommonStatusEnum.DRIVER_NOT_EXITST.getCode(), CommonStatusEnum.DRIVER_NOT_EXITST.getValue());
+        }
+        DriverUser driverUser = driverUsers.get(0);
+        return ResponseResult.success(driverUser);
+    }
+
 //    @Autowired
 //    DriverCarBindingRelationshipMapper driverCarBindingRelationshipMapper;
 //

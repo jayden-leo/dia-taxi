@@ -3,7 +3,6 @@ package com.jayden.internelcommon.dto;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-
 public class DriverUserWorkStatus implements Serializable {
 
     private Long id;
