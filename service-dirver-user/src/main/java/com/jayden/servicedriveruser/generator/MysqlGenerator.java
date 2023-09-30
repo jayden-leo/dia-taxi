@@ -22,8 +22,8 @@ public class MysqlGenerator {
                 })
                 .strategyConfig(builder -> {
 //                    builder.addInclude("car");
-                    builder.addInclude("driver_car_binding_relationship");
-//                    builder.addInclude("driver_user_work_status");
+//                    builder.addInclude("driver_car_binding_relationship");
+                    builder.addInclude("driver_user_work_status");
                 })
                 .templateEngine(new FreemarkerTemplateEngine())
                 .execute();

@@ -18,6 +18,7 @@ spring:
 
 # 自定义的 key：value
 amap:
-  key:
-  #服务id，服务名称：测试2
-  sid: 809558
+  key: 
+  #服务id，服务名称：dia-taxi
+  sid: 1008248
+  tid: 764150982

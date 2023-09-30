@@ -34,7 +34,7 @@ public class VerificationCodeService {
     @Autowired
     StringRedisTemplate stringRedisTemplate;
 
-    public ResponseResult checkAndsendVerificationCode(String driverPhone){
+    public ResponseResult checkAndSendVerificationCode(String driverPhone){
         // 查询 service-driver-user，该手机号的司机是否存在
         ResponseResult<DriverUserExistsResponse> driverUserExistsResponseResponseResult = serviceDriverUserClient.checkDriver(driverPhone);
         DriverUserExistsResponse data = driverUserExistsResponseResponseResult.getData();

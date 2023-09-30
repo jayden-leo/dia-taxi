@@ -1,0 +1,27 @@
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "dia-taxi",
+        "sid": 1008248
+    }
+}
+
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "name": "taxi-1",
+        "tid": 764150982,
+        "sid": 1008248
+    }
+}
+
+{
+    "errcode": 10000,
+    "errmsg": "OK",
+    "data": {
+        "trname": "测试轨迹",
+        "trid": 20
+    }
+}

@@ -38,22 +38,16 @@ public class CarService {
         ResponseResult<TrackResponse> trackResponseResponseResult = serviceMapClient.addTrack(tid);
         String trid = trackResponseResponseResult.getData().getTrid();
         String trname = trackResponseResponseResult.getData().getTrname();
-
         car.setTrid(trid);
         car.setTrname(trname);
-
         carMapper.updateById(car);
-
-
         return ResponseResult.success("");
     }
 
     public ResponseResult<Car> getCarById(Long id){
         Map<String,Object> map = new HashMap<>();
         map.put("id",id);
-
         List<Car> cars = carMapper.selectByMap(map);
-
         return ResponseResult.success(cars.get(0));
     }
 }
