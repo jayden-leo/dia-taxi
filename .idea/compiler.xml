@@ -8,13 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="api-passenger" />
-        <module name="api-boss" />
         <module name="service-price" />
         <module name="service-passenger-user" />
         <module name="api-driver" />
         <module name="service-verificationcode" />
-        <module name="service-dirver-user" />
         <module name="internel-common" />
+        <module name="api-boss" />
+        <module name="service-dirver-user" />
+        <module name="service-order" />
         <module name="service-map" />
       </profile>
     </annotationProcessing>
@@ -28,6 +29,7 @@
       <module name="internel-common" options="-parameters" />
       <module name="service-dirver-user" options="-parameters" />
       <module name="service-map" options="-parameters" />
+      <module name="service-order" options="-parameters" />
       <module name="service-passenger-user" options="-parameters" />
       <module name="service-price" options="-parameters" />
       <module name="service-verificationcode" options="-parameters" />

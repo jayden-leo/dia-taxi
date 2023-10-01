@@ -5,7 +5,7 @@ import com.jayden.internelcommon.constant.TokenConstants;
 import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.dto.TokenResult;
 import com.jayden.internelcommon.response.TokenResponse;
-import com.jayden.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.util.JwtUtils;
 import com.jayden.internelcommon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class TokenService {
 
     public ResponseResult refreshToken(String refreshTokenSrc) {
         // 解析refreshToken
-        TokenResult tokenResult = JWTUtils.checkToken(refreshTokenSrc);
+        TokenResult tokenResult = JwtUtils.checkToken(refreshTokenSrc);
         if (tokenResult == null) {
             return ResponseResult.fail(CommonStatusEnum.TOKEN_ERROR.getCode(), CommonStatusEnum.TOKEN_ERROR.getValue());
         }
@@ -38,8 +38,8 @@ public class TokenService {
         }
 
         // 生成双Token
-        String refreshToken = JWTUtils.generatorToken(phone, identity, TokenConstants.REFRESH_TOKEN_TYPE);
-        String accessToken = JWTUtils.generatorToken(phone, identity, TokenConstants.ACCESS_TOKEN_TYPE);
+        String refreshToken = JwtUtils.generatorToken(phone, identity, TokenConstants.REFRESH_TOKEN_TYPE);
+        String accessToken = JwtUtils.generatorToken(phone, identity, TokenConstants.ACCESS_TOKEN_TYPE);
 
         String accessTokenKey = RedisPrefixUtils.generatorTokenKey(phone,identity,TokenConstants.ACCESS_TOKEN_TYPE);
 

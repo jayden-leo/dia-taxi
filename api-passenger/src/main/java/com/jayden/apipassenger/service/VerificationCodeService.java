@@ -9,7 +9,7 @@ import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.request.VerificationCodeDTO;
 import com.jayden.internelcommon.response.NumberCodeResponse;
 import com.jayden.internelcommon.response.TokenResponse;
-import com.jayden.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.util.JwtUtils;
 import com.jayden.internelcommon.util.RedisPrefixUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,8 +77,8 @@ public class VerificationCodeService {
         servicePassengerUserClient.loginOrRegister(verificationCodeDTO);
 
         // 颁发令牌
-        String accessToken = JWTUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
-        String refreshToken = JWTUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.REFRESH_TOKEN_TYPE);
+        String accessToken = JwtUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);
+        String refreshToken = JwtUtils.generatorToken(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.REFRESH_TOKEN_TYPE);
 
         // 将token存入到redis中
         String accessTokenKey = RedisPrefixUtils.generatorTokenKey(passengerPhone, IdentityConstants.PASSENGER_IDENTITY, TokenConstants.ACCESS_TOKEN_TYPE);

@@ -11,7 +11,6 @@ import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.response.DriverUserExistsResponse;
 import com.jayden.internelcommon.response.NumberCodeResponse;
 import com.jayden.internelcommon.response.TokenResponse;
-import com.jayden.internelcommon.util.JWTUtils;
 import com.jayden.internelcommon.util.RedisPrefixUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;

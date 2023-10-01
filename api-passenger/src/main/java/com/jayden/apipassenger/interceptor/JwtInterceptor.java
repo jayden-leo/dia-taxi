@@ -4,7 +4,7 @@ package com.jayden.apipassenger.interceptor;
 import com.jayden.internelcommon.constant.TokenConstants;
 import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.dto.TokenResult;
-import com.jayden.internelcommon.util.JWTUtils;
+import com.jayden.internelcommon.util.JwtUtils;
 import com.jayden.internelcommon.util.RedisPrefixUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -26,7 +26,7 @@ public class JwtInterceptor implements HandlerInterceptor {
         boolean result = true;
         String resultString = "";
         String token = request.getHeader("Authorization");
-        TokenResult tokenResult = JWTUtils.checkToken(token);
+        TokenResult tokenResult = JwtUtils.checkToken(token);
 
         if (tokenResult == null){
             resultString = "token invalid";

@@ -3,7 +3,6 @@ package com.jayden.apidriver.interceptor;
 import com.jayden.internelcommon.constant.TokenConstants;
 import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.dto.TokenResult;
-import com.jayden.internelcommon.util.JWTUtils;
 import com.jayden.internelcommon.util.RedisPrefixUtils;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;

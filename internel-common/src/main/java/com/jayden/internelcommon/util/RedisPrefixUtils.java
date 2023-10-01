@@ -17,8 +17,8 @@ public class RedisPrefixUtils {
      * @param identity
      * @return
      */
-    public static String generatorKeyByPhone(String phone, String identity) {
-        return verificationCodePrefix + identity + "-" + phone;
+    public static String generatorKeyByPhone(String phone, String identity){
+        return verificationCodePrefix + identity+ "-" + phone;
     }
 
     /**
@@ -27,7 +27,7 @@ public class RedisPrefixUtils {
      * @param identity
      * @return
      */
-    public static String generatorTokenKey(String phone, String identity, String tokenType) {
+    public static String generatorTokenKey(String phone , String identity , String tokenType){
         return tokenPrefix + phone + "-" + identity + "-" + tokenType;
     }
 }

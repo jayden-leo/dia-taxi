@@ -12,6 +12,7 @@
         <module>service-dirver-user</module>
         <module>api-boss</module>
         <module>api-driver</module>
+        <module>service-order</module>
     </modules>
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -40,6 +41,11 @@
             <groupId>com.jayden</groupId>
             <artifactId>internel-common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.14.0</version>
         </dependency>
     </dependencies>
 

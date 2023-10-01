@@ -6,7 +6,6 @@ import com.jayden.internelcommon.dto.DriverUser;
 import com.jayden.internelcommon.dto.DriverUserWorkStatus;
 import com.jayden.internelcommon.dto.ResponseResult;
 import com.jayden.internelcommon.dto.TokenResult;
-import com.jayden.internelcommon.util.JWTUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
